@@ -50,8 +50,12 @@ namespace API.Controllers
         [Route("edit/{Id}")]
         public async Task<IActionResult> Edit(Contact contact)
         {
-            await _editContact.EditExistedContact(contact);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                await _editContact.EditExistedContact(contact);
+                return RedirectToAction("Index");
+            }
+            return View(contact);
         }
         [HttpPost]
         [Route("delete/{Id}")]

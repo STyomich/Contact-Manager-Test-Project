@@ -15,17 +15,18 @@
     <h1>Edit Contact</h1>
 
     <form asp-action="Edit" method="post">
-        <!-- Bind the hidden field to the Id property -->
         <input type="hidden" asp-for="Id" />
 
         <div>
             <label asp-for="Name"></label>
-            <input asp-for="Name" value="@Model.Name">
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 
         <div>
             <label asp-for="DateOfBirth"></label>
-            <input asp-for="DateOfBirth" type="date" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" />
+            <input asp-for="DateOfBirth" type="date" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
         </div>
 
         <div>
@@ -35,22 +36,24 @@
 
         <div>
             <label asp-for="Phone"></label>
-            <input asp-for="Phone" value="@Model.Phone" />
+            <input asp-for="Phone" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
 
         <div>
             <label asp-for="Salary"></label>
-            <input asp-for="Salary" value="@Model.Salary" />
+            <input asp-for="Salary" />
+            <span asp-validation-for="Salary" class="text-danger"></span>
         </div>
 
-        <!-- Save button to submit the form -->
         <button type="submit">Save</button>
     </form>
 
-    <!-- Back to the contact list -->
     <form asp-controller="DotnetContacts" asp-action="Index" method="get" style="display:inline;">
         <button type="submit">To list</button>
     </form>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
 </body>
 
 </html>
