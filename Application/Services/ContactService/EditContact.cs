@@ -11,10 +11,17 @@ namespace Application.Services.ContactService
         {
             _context = context;
         }
-        public async Task<int> EditExistedContact(Contact contact)
+        public async Task<bool> EditExistedContact(Contact editedContact)
         {
-            Console.WriteLine("");
-            return 1;
+            var contact = await _context.Contacts.FindAsync(editedContact.Id);
+            if (contact == null) return false;
+            contact.Name = editedContact.Name;
+            contact.DateOfBirth = editedContact.DateOfBirth;
+            contact.Married = editedContact.Married;
+            contact.Phone = editedContact.Phone;
+            contact.Salary = editedContact.Salary;
+            var result = await _context.SaveChangesAsync() > 0;
+            return result;
         }
     }
 }

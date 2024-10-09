@@ -1,0 +1,56 @@
+@using Core.Domain.Entities
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model Contact
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Contact</title>
+</head>
+
+<body>
+    <h1>Edit Contact</h1>
+
+    <form asp-action="Edit" method="post">
+        <!-- Bind the hidden field to the Id property -->
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" value="@Model.Name">
+        </div>
+
+        <div>
+            <label asp-for="DateOfBirth"></label>
+            <input asp-for="DateOfBirth" type="date" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" />
+        </div>
+
+        <div>
+            <label asp-for="Married"></label>
+            <input asp-for="Married" type="checkbox" />
+        </div>
+
+        <div>
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" value="@Model.Phone" />
+        </div>
+
+        <div>
+            <label asp-for="Salary"></label>
+            <input asp-for="Salary" value="@Model.Salary" />
+        </div>
+
+        <!-- Save button to submit the form -->
+        <button type="submit">Save</button>
+    </form>
+
+    <!-- Back to the contact list -->
+    <form asp-controller="DotnetContacts" asp-action="Index" method="get" style="display:inline;">
+        <button type="submit">To list</button>
+    </form>
+</body>
+
+</html>

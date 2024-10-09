@@ -18,6 +18,8 @@ namespace API.Extensions
             services.AddScoped<GetContactsList>();
             services.AddScoped<UploadCsvFile>();
             services.AddScoped<EditContact>();
+            services.AddScoped<FindContact>();
+            services.AddScoped<DeleteContact>();
             return services;
         }
     }
