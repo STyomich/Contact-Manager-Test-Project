@@ -1,0 +1,44 @@
+@model List<Core.Domain.Entities.Contact>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+</head>
+
+<body>
+    <h1>Contact List</h1>
+    <form asp-controller="DotnetContacts" asp-action="UploadCsv" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required />
+        <button type="submit">Upload</button>
+    </form>
+
+    <table id="contactTable" class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Married</th>
+                <th>Phone</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td>@contact.Name</td>
+                    <td>@contact.DateOfBirth.ToShortDateString()</td>
+                    <td>@contact.Married</td>
+                    <td>@contact.Phone</td>
+                    <td>@contact.Salary?.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+</html>
