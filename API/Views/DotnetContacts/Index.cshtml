@@ -25,7 +25,7 @@
                 <th>Married</th>
                 <th>Phone</th>
                 <th>Salary</th>
-                <th>Actions</th> <!-- Add a column for action buttons -->
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -38,14 +38,9 @@
                     <td>@contact.Phone</td>
                     <td>@contact.Salary?.ToString("C")</td>
                     <td>
-                        <!-- Edit Button -->
-
                         <form asp-controller="DotnetContacts" asp-action="Edit" asp-route-Id="@contact.Id" method="get">
                             <button type="submit">Edit</button>
                         </form>
-
-
-                        <!-- Delete Button -->
                         <form asp-controller="DotnetContacts" asp-action="Delete" asp-route-Id="@contact.Id" method="post"
                             onsubmit="return confirm('Are you sure you want to delete this contact?');">
                             <input type="hidden" name="id" value="@contact.Id" />
